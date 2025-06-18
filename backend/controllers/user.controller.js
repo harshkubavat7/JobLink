@@ -102,8 +102,8 @@ export const logout = async (req,res)=>{
 
 export const updateProfile = async(req,res)=>{
     try {
-        console.log("req.body:", req.body);
-console.log("req.file:", req.file);
+        // console.log("req.body:", req.body);
+// console.log("req.file:", req.file);
 
         const {fullname,email,phoneNumber,bio,skills} = req.body; //get the data from the request body
 

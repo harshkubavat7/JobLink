@@ -11,7 +11,7 @@ export const isAuthenticated = (req, res, next) => {
             return res.status(401).json({message: "invalid token", success: false});
         }
         
-        console.log("Decoded token:", decode);
+        // console.log("Decoded token:", decode);
 
         req.id=decode.id; // Attach the user ID to the request object
         next(); // Call the next middleware or route handler
