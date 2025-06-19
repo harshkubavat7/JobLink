@@ -8,6 +8,9 @@ import jobRoute from './routes/job.route.js'; // Import job routes
 import applicationRoute from './routes/application.route.js'; // Import application routes
 import dotenv from 'dotenv';
 import path from 'path';
+import connectDB from './utils/db.js';
+// import { pathToRegexp } from 'path-to-regexp';
+
 dotenv.config({}); // Load environment variables from .env file
 
 const app = express();//instance of express
@@ -27,18 +30,27 @@ app.use(cors(corsOptions));
 
 
 //api's
-app.use('/api/v1/user', userRoute); // Use user routes under /api/v1/user
+
+
+
+
 app.use('/api/v1/company', companyRoute); // Use user routes under /api/v1/user
 app.use('/api/v1/job',jobRoute); // Use job routes under /api/v1/job
 app.use('/api/v1/application', applicationRoute); // Use application routes under /api/v1/application
+app.use('/api/v1/user', userRoute); // Use user routes under /api/v1/user
 
-app.use(express.static(path.join(_dirname, '/frontend/dist'))); // Serve static files from the frontend build directory
-app.get('*', (_, res) => {
-  res.sendFile(path.resolve(_dirname,"frontend","dist","index.html")); // Serve the main HTML file for any other route
-});
+
+  
+// app.use(express.static(path.join(_dirname, '/frontend/dist'))); // Serve static files from the frontend build directory
+// app.get('*', (_, res) => {
+//   res.sendFile(path.resolve(_dirname,"frontend","dist","index.html")); // Serve the main HTML file for any other route
+// });
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  coneectDB();
+  connectDB();
   console.log(`Server is running on ${port}`);
 })
+
+
+
